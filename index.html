@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoría Jurídica - Firma de Abogados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Función para manejar el carrito de compras
+        let carrito = [];
+
+        function agregarAlCarrito(servicio) {
+            carrito.push(servicio);
+            actualizarCarrito();
+        }
+
+        function eliminarDelCarrito(indice) {
+            carrito.splice(indice, 1);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const carritoElement = document.getElementById('carrito-items');
+            carritoElement.innerHTML = '';
+            carrito.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Eliminar';
+                removeButton.onclick = () => eliminarDelCarrito(index);
+                listItem.appendChild(removeButton);
+                carritoElement.appendChild(listItem);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Asesoría Jurídica</h1>
+        <p>Soluciones legales profesionales y personalizadas</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#consulta">Consulta Personalizada</a></li>
+            <li><a href="#carrito">Carrito</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="inicio">
+        <h2>Bienvenido</h2>
+        <p>Ofrecemos servicios de redacción de escritos, análisis de textos jurídicos, medidas de apremio y más.</p>
+    </div>
+
+    <div class="container" id="servicios">
+        <h2>Servicios</h2>
+        <ul>
+            <li>Redacción de escritos legales <button onclick="agregarAlCarrito('Redacción de escritos legales')">Agregar al carrito</button></li>
+            <li>Medidas de apremio por pensión de alimentos <button onclick="agregarAlCarrito('Medidas de apremio por pensión de alimentos')">Agregar al carrito</button></li>
+            <li>Transferencia de titularidad en pensión de alimentos <button onclick="agregarAlCarrito('Transferencia de titularidad en pensión de alimentos')">Agregar al carrito</button></li>
+        </ul>
+    </div>
+
+    <div class="container" id="contacto">
+        <h2>Contacto</h2>
+        <form action="#" method="POST">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensaje:</label>
+            <textarea id="message"
