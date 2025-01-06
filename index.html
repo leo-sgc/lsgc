@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,6 +6,39 @@
     <title>Asesoría Jurídica - Servicios</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(servicio, precio) {
+            carrito.push({ servicio, precio });
+            actualizarCarrito();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const carritoElement = document.getElementById('carrito-items');
+            carritoElement.innerHTML = '';
+
+            carrito.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    ${item.servicio} - $${item.precio.toFixed(2)}
+                    <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                `;
+                carritoElement.appendChild(listItem);
+            });
+
+            const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+            document.getElementById('carrito-total').textContent = `Total: $${total.toFixed(2)}`;
+
+            const carritoContainer = document.getElementById('carrito');
+            carritoContainer.style.display = carrito.length > 0 ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -20,7 +52,6 @@
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#contacto">Contacto</a></li>
             <li><a href="#consulta">Consulta Personalizada</a></li>
-            <li><a href="#carrito">Carrito</a></li>
         </ul>
     </nav>
 
@@ -31,30 +62,43 @@
 
     <div class="container" id="servicios">
         <h2>Servicios</h2>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="accordionServicios">
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Redacción de escritos legales
+                        Redacción de escritos legales - $50.00
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="collapseOne" class="accordion-collapse collapse show">
                     <div class="accordion-body">
-                        <strong>Servicio especializado.</strong> Incluye la elaboración de documentos legales adaptados a tus necesidades específicas.
-                        <button onclick="agregarAlCarrito('Redacción de escritos legales', 50000)">Agregar al carrito</button>
+                        Servicio especializado que incluye la elaboración de documentos legales adaptados a tus necesidades específicas.
+                        <button onclick="agregarAlCarrito('Redacción de escritos legales', 50)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Medidas de apremio por pensión de alimentos
+                        Medidas de apremio por pensión de alimentos - $70.00
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                        <strong>Acciones legales rápidas.</strong> Nos encargamos de gestionar medidas de apremio para asegurar el cumplimiento de las pensiones alimenticias.
-                        <button onclick="agregarAlCarrito('Medidas de apremio', 40000)">Agregar al carrito</button>
+                        Acciones legales rápidas para asegurar el cumplimiento de las pensiones alimenticias.
+                        <button onclick="agregarAlCarrito('Medidas de apremio por pensión de alimentos', 70)">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Transferencia de titularidad en pensión de alimentos - $80.00
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        Servicio legal especializado para transferir la titularidad de pensión de alimentos.
+                        <button onclick="agregarAlCarrito('Transferencia de titularidad en pensión de alimentos', 80)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
@@ -62,24 +106,55 @@
     </div>
 
     <aside>
-        <h2>Sobre Nosotros</h2>
-        <p>Asesoría Jurídica brinda servicios confiables y personalizados para atender sus necesidades legales. Confíe en nosotros para resultados efectivos.</p>
+        <h3>Información adicional</h3>
+        <p>¿Tienes dudas? Contáctanos para una asesoría personalizada y profesional.</p>
+        <ul>
+            <li><a href="#">Guías legales</a></li>
+            <li><a href="#">Artículos recientes</a></li>
+            <li><a href="#">Testimonios</a></li>
+        </ul>
     </aside>
 
-    <div id="carrito">
-        <div id="carrito-header">Carrito de Compras</div>
-        <ul id="carrito-items">
-            <!-- Items added dynamically -->
+    <div class="container" id="contacto">
+        <h2>Contacto</h2>
+        <p>Correo: asistencia.juridica.lsgc@gmail.com</p>
+        <p>Redes sociales:</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
         </ul>
-        <div id="carrito-footer">Total: $<span id="carrito-total">0</span></div>
+    </div>
+
+    <div class="container" id="consulta">
+        <h2>Consulta Personalizada</h2>
+        <form action="#" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="consulta">Consulta:</label>
+            <textarea id="consulta" name="consulta" rows="5" required></textarea>
+
+            <button type="submit">Enviar Consulta</button>
+        </form>
+    </div>
+
+    <div id="carrito" style="display: none;">
+        <div id="carrito-header">Carrito de Compras</div>
+        <ul id="carrito-items"></ul>
+        <div id="carrito-footer">
+            <p id="carrito-total">Total: $0.00</p>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2025 Asesoría Jurídica. Todos los derechos reservados.</p>
-        <p>Contacto: asistencia.juridica.lsgc@gmail.com</p>
     </footer>
 
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
