@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de servicios legales, incluyendo asesoría jurídica y redacción de documentos legales.">
+    <meta name="author" content="Tu Nombre">
+    <title>Servicios Jurídicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+            <div class="logo-image">Servicios Jurídicos</div>
+            <input type="checkbox" id="menu">
+            <label for="menu"><img class="menu-icon" src="imagenes/menu-icon.png" alt="Icono de menú"></label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Bienvenido a Servicios Jurídicos</h1>
+            <p>Ofrecemos soluciones legales personalizadas para todas tus necesidades.</p>
+            <a href="#services" class="btn">Ver Servicios</a>
+        </div>
+    </header>
+    <section id="services" class="Servicios">
+        <div class="Servicios-content">
+            <h2>Servicios</h2>
+            <p class="txt-p">Ofrecemos una variedad de servicios legales adaptados a tus necesidades.</p>
+            <div class="services-0">
+                <div class="Servicios-group">
+                    <img src="imagenes/servicio1.jpg" alt="Servicio de redacción de documentos">
+                    <h3>Redacción de Documentos</h3>
+                </div>
+                <div class="Servicios-group">
+                    <img src="imagenes/servicio2.jpg" alt="Asesoría en medidas de apremio">
+                    <h3>Medidas de Apremio</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="Contacto-content">
+        <h2>Contacto</h2>
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo" required>
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" placeholder="Escribe tu mensaje" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="link">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2025 Servicios Jurídicos. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
